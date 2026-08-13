@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VOIDMAG</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,700;0,900;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #f2f1ec;
+            --text-color: #0d0d0d;
+            --border-color: #0d0d0d;
+            --accent-blue: #0022ff;
+            --font-sans: 'Archivo', sans-serif;
+            --font-serif: 'Instrument Serif', serif;
+            --grid-gap: 2rem;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--font-sans);
+            font-size: 16px;
+            line-height: 1.4;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Subtle Noise Texture for Raw Editorial Feel */
+        .noise-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.04;
+            background-image: url('data:image/svg+xml;utf8,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)"/%3E%3C/svg%3E');
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* NAVIGATION */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem 2rem;
+            background-color: var(--bg-color);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 100;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: -0.01em;
+            font-size: 0.9rem;
+        }
+
+        .nav-logo {
+            font-weight: 900;
+            font-size: 1.2rem;
+            letter-spacing: -0.03em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a:hover {
+            text-decoration: underline;
+            text-decoration-thickness: 1.5px;
+            text-underline-offset: 4px;
+        }
+
+        /* VIEW CONTAINER */
+        #app {
+            padding-top: 60px;
+            min-height: 100vh;
+        }
+
+        .view {
+            display: none;
+            padding: 2rem;
+        }
+
+        .view.active {
+            display: block;
+        }
+
+        /* HOMEPAGE GRID */
+        .editorial-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: var(--grid-gap);
+            margin-top: 2rem;
+            margin-bottom: 5rem;
+        }
+
+        .article-card {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .img-container {
+            width: 100%;
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            background-color: #d9d8d4;
+        }
+
+        .article-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            filter: grayscale(100%);
+            transition: filter 0.2s ease;
+        }
+
+        .article-card:hover img {
+            filter: grayscale(0%);
+        }
+
+        .article-meta {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-top: 1rem;
+            display: flex;
+            gap: 1rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+
+        .article-title {
+            font-size: 2.5rem;
+            font-weight: 900;
+            line-height: 1;
+            margin-top: 0.5rem;
+            letter-spacing: -0.03em;
+            text-transform: uppercase;
+        }
+
+        /* Layout placements */
+        .card-main {
+            grid-column: 1 / 9; 
+        }
+        .card-main img {
+            aspect-ratio: 16/9;
+        }
+        
+        .card-secondary {
+            grid-column: 9 / 13; 
+        }
+        .card-secondary img {
+            aspect-ratio: 3/4;
+        }
+
+        .card-tertiary {
+            grid-column: 4 / 10;
+            margin-top: 4rem;
+        }
+        .card-tertiary img {
+            aspect-ratio: 16/9;
+        }
+
+        .tag-accent { color: var(--accent-blue); }
+
+        /* ARTICLE PAGE */
+        .article-layout {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 2rem;
+        }
+
+        .article-hero-container {
+            border: 1px solid var(--border-color);
+            margin-bottom: 1rem;
+            background-color: #d9d8d4;
+        }
+
+        .article-hero {
+            width: 100%;
+            max-height: 70vh;
+            object-fit: cover;
+            display: block;
+            filter: grayscale(100%);
+        }
+
+        .image-caption {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            color: #555;
+        }
+
+        .article-header-meta {
+            font-size: 0.85rem;
+            font-weight: 700;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 0;
+            margin-bottom: 3rem;
+            display: flex;
+            justify-content: space-between;
+            text-transform: uppercase;
+        }
+
+        .article-h1 {
+            font-family: var(--font-sans);
+            font-size: 5rem;
+            font-weight: 900;
+            line-height: 0.9;
+            margin-bottom: 3rem;
+            text-transform: uppercase;
+            letter-spacing: -0.04em;
+        }
+
+        .article-body {
+            display: grid;
+            grid-template-columns: 2fr 6fr 2fr;
+            gap: 2rem;
+        }
+
+        .article-text {
+            grid-column: 2 / 3;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .article-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        .pull-quote {
+            font-family: var(--font-serif);
+            font-size: 2.5rem;
+            line-height: 1.1;
+            margin: 3rem 0;
+            color: var(--accent-blue);
+            font-style: italic;
+            border-left: 2px solid var(--accent-blue);
+            padding-left: 1.5rem;
+        }
+
+        .inline-image-container {
+            margin: 3rem 0 1rem 0;
+            border: 1px solid var(--border-color);
+            background: #d9d8d4;
+        }
+
+        .inline-image {
+            width: 100%;
+            display: block;
+            filter: grayscale(100%);
+        }
+
+        .sources {
+            margin-top: 4rem;
+            border-top: 1px solid var(--border-color);
+            padding-top: 1.5rem;
+            font-size: 0.85rem;
+        }
+        
+        .sources-title {
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .sources ul {
+            list-style: none;
+        }
+
+        .sources li { 
+            margin-bottom: 0.5rem; 
+            line-height: 1.4;
+        }
+
+        /* ARCHIVE PAGE */
+        .archive-layout {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding-top: 2rem;
+        }
+
+        .archive-filters {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 1rem;
+        }
+        
+        .archive-filters span:hover {
+            color: var(--accent-blue);
+            cursor: pointer;
+            text-decoration: underline;
+        }
+
+        .archive-list {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .archive-item {
+            display: grid;
+            grid-template-columns: 2fr 6fr 2fr 1fr;
+            align-items: center;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .archive-item:hover .archive-title {
+            color: var(--accent-blue);
+        }
+
+        .archive-category, .archive-date {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .archive-title {
+            font-family: var(--font-sans);
+            font-weight: 900;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            transition: color 0.1s;
+        }
+
+        /* ABOUT PAGE */
+        .about-layout {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 70vh;
+        }
+        .about-content {
+            max-width: 600px;
+        }
+        .about-text {
+            font-size: 2rem;
+            font-family: var(--font-sans);
+            font-weight: 700;
+            line-height: 1.2;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            margin-bottom: 3rem;
+        }
+        .about-contact {
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            border-top: 1px solid var(--border-color);
+            padding-top: 1.5rem;
+        }
+
+        /* MOBILE RESPONSIVE */
+        @media (max-width: 900px) {
+            nav {
+                padding: 1rem;
+                flex-wrap: wrap;
+            }
+            .nav-links {
+                margin-top: 1rem;
+                gap: 1rem;
+                width: 100%;
+                justify-content: space-between;
+                font-size: 0.8rem;
+            }
+            #app { padding-top: 90px; }
+            
+            .editorial-grid {
+                display: flex;
+                flex-direction: column;
+                gap: 3rem;
+            }
+            .card-tertiary { margin-top: 0; }
+            
+            .article-h1 { font-size: 3rem; }
+            .article-body {
+                grid-template-columns: 1fr;
+            }
+            .article-text { grid-column: 1; }
+            
+            .archive-item {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+                padding: 1rem 0;
+            }
+            .archive-title { font-size: 1.2rem; }
+            
+            .about-text { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="noise-overlay"></div>
+
+    <nav>
+        <div class="nav-logo"><a onclick="navigate('home')">VOIDMAG</a></div>
+        <div class="nav-links">
+            <a onclick="navigate('home')">Music</a>
+            <a onclick="navigate('home')">Fashion</a>
+            <a onclick="navigate('home')">Art</a>
+            <a onclick="navigate('home')">Culture</a>
+            <a onclick="navigate('archive')">Archive</a>
+            <a onclick="navigate('about')">About</a>
+        </div>
+    </nav>
+
+    <div id="app">
+        <!-- HOMEPAGE VIEW -->
+        <div id="view-home" class="view active">
+            <div class="editorial-grid">
+                
+                <a onclick="navigate('article')" class="article-card card-main">
+                    <div class="img-container">
+                        <img src="https://images.unsplash.com/photo-1598387181032-a3103a2db5b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Placeholder image of DJ equipment">
+                    </div>
+                    <div class="article-meta">
+                        <span class="tag-accent">Music / Profile</span>
+                        <span>August 2026</span>
+                    </div>
+                    <div class="article-title">Ben UFO: The Unexpected</div>
+                </a>
+
+                <a onclick="navigate('home')" class="article-card card-secondary">
+                    <div class="img-container">
+                        <img src="https://images.unsplash.com/photo-1629218080103-625208447d21?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Placeholder image of vinyl records">
+                    </div>
+                    <div class="article-meta">
+                        <span>Music / Archive</span>
+                        <span>July 2026</span>
+                    </div>
+                    <div class="article-title">The Most Essential Electronic Albums of the 1990s</div>
+                </a>
+
+                <a onclick="navigate('home')" class="article-card card-tertiary">
+                    <div class="img-container">
+                        <img src="https://images.unsplash.com/photo-1574169208507-84376144848b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Placeholder image of festival crowd">
+                    </div>
+                    <div class="article-meta">
+                        <span>Culture / Visual</span>
+                        <span>June 2026</span>
+                    </div>
+                    <div class="article-title">Scenes From Electronic Festivals</div>
+                </a>
+
+            </div>
+        </div>
+
+        <!-- ARTICLE VIEW -->
+        <div id="view-article" class="view">
+            <div class="article-layout">
+                <div class="article-header-meta">
+                    <span>MUSIC / PROFILE</span>
+                    <span>AUGUST 2026</span>
+                </div>
+
+                <h1 class="article-h1">Ben UFO:<br>The Unexpected</h1>
+
+                <div class="article-hero-container">
+                    <img class="article-hero" src="https://images.unsplash.com/photo-1598387181032-a3103a2db5b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Placeholder image representing DJ culture">
+                </div>
+                <div class="image-caption">Placeholder Image. A DJ mixer in a club environment.</div>
+
+                <div class="article-body">
+                    <div class="article-empty-sidebar"></div>
+                    
+                    <div class="article-text">
+                        <p>Ben Thomson, operating under the alias Ben UFO, is a British DJ and co-founder of the independent record label Hessle Audio. Emerging in the late 2000s alongside frequent collaborators Pearson Sound and Pangaea, Thomson established a reputation built squarely on selection and technical mixing ability.</p>
+                        
+                        <p>Unlike the majority of contemporary touring DJs, Thomson does not produce his own music. His career path runs counter to the modern electronic music industry standard, which often requires artists to release original tracks to secure international bookings and festival slots.</p>
+
+                        <p>His DJ sets are recognized for their stylistic breadth. A typical set often bridges gaps between distinct regional and historical scenes, integrating UK bass, garage, grime, dubstep, house, and propulsive techno. This approach prioritizes the historical lineage of dance music while simultaneously highlighting emerging and experimental producers.</p>
+
+                        <div class="pull-quote">
+                            "He is one of the few DJs out there who can genuinely claim to have shaped the sound of contemporary dance music without ever releasing a record."
+                        </div>
+
+                        <div class="inline-image-container">
+                            <img class="inline-image" src="https://images.unsplash.com/photo-1571266028243-3716f02d2d2e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Placeholder: Crowds at an electronic event">
+                        </div>
+                        <div class="image-caption">Placeholder Image. Electronic music event atmosphere.</div>
+
+                        <p>As detailed in a Mixmag profile profiling his ongoing influence, Thomson’s enduring appeal lies in his deep archival knowledge and ability to read a room without resorting to predictable formulas. His work with Hessle Audio continues to act as a crucial platform for experimental club music.</p>
+
+                        <p>In a landscape increasingly dominated by easily categorized sub-genres and algorithmic playlists, Ben UFO’s methodology remains firmly rooted in the physical reality of club culture and the craft of curating records.</p>
+
+                        <div class="sources">
+                            <div class="sources-title">Sources & References</div>
+                            <ul>
+                                <li>Mixmag — <i>“Pure and Simple: Ben UFO Is One of the Most Beloved DJs of Our Time”</i></li>
+                                <li>Hessle Audio — Label Catalog and Release History</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ARCHIVE VIEW -->
+        <div id="view-archive" class="view">
+            <div class="archive-layout">
+                <div class="archive-filters">
+                    <span>Index</span> / 
+                    <span>Music</span> / 
+                    <span>Fashion</span> / 
+                    <span>Art</span> / 
+                    <span>Culture</span>
+                </div>
+
+                <div class="archive-list">
+                    <a onclick="navigate('article')" class="archive-item">
+                        <div class="archive-category">MUSIC</div>
+                        <div class="archive-title">Ben UFO: The Unexpected</div>
+                        <div class="archive-date">August 2026</div>
+                        <div>Profile</div>
+                    </a>
+                    <a onclick="navigate('home')" class="archive-item">
+                        <div class="archive-category">MUSIC</div>
+                        <div class="archive-title">The Most Essential Electronic Albums of the 1990s</div>
+                        <div class="archive-date">July 2026</div>
+                        <div>List</div>
+                    </a>
+                    <a onclick="navigate('home')" class="archive-item">
+                        <div class="archive-category">CULTURE</div>
+                        <div class="archive-title">Scenes From Electronic Festivals</div>
+                        <div class="archive-date">June 2026</div>
+                        <div>Visual</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- ABOUT VIEW -->
+        <div id="view-about" class="view">
+            <div class="about-layout">
+                <div class="about-content">
+                    <div class="about-text">
+                        VOIDMAG is an independent publication exploring music, fashion, art and contemporary culture.
+                    </div>
+                    <div class="about-contact">
+                        <a href="mailto:hello@voidmag.com">hello@voidmag.com</a>
+                        <a href="#">Instagram: @voidmag</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function navigate(viewId) {
+            const views = document.querySelectorAll('.view');
+            views.forEach(view => {
+                view.classList.remove('active');
+            });
+
+            const target = document.getElementById('view-' + viewId);
+            if (target) {
+                target.classList.add('active');
+                window.scrollTo(0, 0);
+            }
+        }
+    </script>
+</body>
+</html>
