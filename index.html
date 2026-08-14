@@ -138,69 +138,61 @@ nav {
 
     cursor: pointer;
 
-    margin-bottom: 100px;
+    border-bottom: 5px solid var(--black);
+
+    padding-bottom: 12px;
+
+    margin-bottom: 30px;
 
 }
 
-.hero-photo {
+.hero-meta {
 
-    height: 72vh;
-
-    object-fit: cover;
-
-    filter: contrast(1.2);
-
-    transition: filter .3s ease;
-
-}
-
-.hero:hover .hero-photo {
-
-    filter: grayscale(0%) contrast(1);
-
-}
-
-.hero-bottom {
-
-    display: flex;
-
-    justify-content: space-between;
-
-    align-items: flex-start;
-
-    gap: 20px;
-
-    margin-top: 15px;
-
-}
-
-.meta {
-
-    font-size: 12px;
+    font-size: 14px;
 
     font-weight: 900;
 
     text-transform: uppercase;
 
+    margin-bottom: 12px;
+
 }
 
 .hero h1 {
-    font-size: clamp(48px, 8vw, 120px);
-   
-    line-height: .82;
-   
+
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+    font-size: clamp(70px, 12vw, 180px);
+
+    line-height: 0.82;
+
     letter-spacing: -5px;
 
     font-weight: 900;
 
     text-transform: uppercase;
 
-    max-width: 1300px;
+    max-width: 1000px;
 
-    margin-top: 10px;
+    margin: 0;
 
 }
 
+.hero-year {
+
+    font-size: 18px;
+
+    font-weight: 900;
+
+    margin-top: 12px;
+
+}
+
+.hero:hover h1 {
+
+    color: var(--green);
+
+}
 
 /* =========================================================
    LATEST
@@ -645,11 +637,15 @@ figcaption {
 
     }
 
-    .hero h1 {
+  .logo {
 
-        font-size: 17vw;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 
-        letter-spacing: -5px;
+    font-size: 24px;
+
+    font-weight: 900;
+
+    letter-spacing: -1px;
 
     }
 
@@ -1074,9 +1070,7 @@ function createImage(article, className) {
 
 function createHero() {
 
-    const article =
-        ARTICLES[0];
-
+    const article = ARTICLES[0];
 
     document.getElementById("hero").innerHTML = `
 
@@ -1085,27 +1079,21 @@ function createHero() {
             onclick="navigate('article', '${article.id}')"
         >
 
-            ${createImage(article, "hero-photo")}
+            <div class="hero-meta">
+                ${article.category}
+            </div>
 
+            <h1>
+                ${article.title}
+            </h1>
 
-            <div class="hero-bottom">
-
-                <div>
-
-                
-
-                    <h1>
-                        ${article.title}
-                    </h1>
-
-                </div>
-
+            <div class="hero-year">
+                ${article.year}
             </div>
 
         </div>
 
     `;
-
 }
 
 
