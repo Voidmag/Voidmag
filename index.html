@@ -67,13 +67,18 @@ nav {
     position: fixed;
     top: 0;
     left: 0;
+
     width: 100%;
+
     padding: 22px 25px;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
+
     background: var(--black);
     color: var(--white);
+
     z-index: 999;
 }
 
@@ -82,16 +87,21 @@ nav {
     font-weight: 900;
     letter-spacing: -2.5px;
     line-height: .85;
+
     white-space: nowrap;
 }
 
 .nav-links {
     display: flex;
     align-items: center;
+
     gap: 28px;
+
     font-size: 15px;
     font-weight: 900;
+
     text-transform: uppercase;
+
     white-space: nowrap;
 }
 
@@ -111,6 +121,7 @@ nav {
 
 .page {
     display: none;
+
     padding: 120px 25px 60px;
 }
 
@@ -125,12 +136,18 @@ nav {
 
 .page-heading {
     font-size: clamp(70px, 12vw, 180px);
+
     line-height: .75;
     letter-spacing: -8px;
+
     font-weight: 900;
+
     text-transform: uppercase;
+
     border-bottom: 3px solid var(--black);
+
     padding-bottom: 25px;
+
     margin-bottom: 35px;
 }
 
@@ -141,34 +158,47 @@ nav {
 
 .hero {
     cursor: pointer;
+
     padding-bottom: 15px;
+
     margin-bottom: 45px;
 }
 
 .hero-meta {
     font-size: 15px;
+
     font-weight: 900;
+
     text-transform: uppercase;
+
     margin-bottom: 15px;
 }
 
 .hero h1 {
     font-size: clamp(75px, 12vw, 185px);
+
     line-height: .80;
+
     letter-spacing: -6px;
+
     font-weight: 900;
+
     text-transform: uppercase;
+
     max-width: 1100px;
 }
 
 .hero-year {
     font-size: 19px;
+
     font-weight: 900;
+
     margin-top: 15px;
 }
 
 .hero:hover h1 {
     text-decoration: underline;
+
     text-underline-offset: 9px;
 }
 
@@ -179,10 +209,15 @@ nav {
 
 .latest-label {
     border-top: 1px solid var(--black);
+
     padding-top: 11px;
+
     margin-bottom: 30px;
+
     font-size: 14px;
+
     font-weight: 900;
+
     text-transform: uppercase;
 }
 
@@ -193,13 +228,17 @@ nav {
 
 .article-grid {
     display: grid;
+
     grid-template-columns: repeat(12, 1fr);
+
     gap: 30px 25px;
+
     margin-bottom: 100px;
 }
 
 .card {
     cursor: pointer;
+
     min-width: 0;
 }
 
@@ -217,23 +256,32 @@ nav {
 
 .card-image {
     background: var(--grey);
+
     overflow: hidden;
 }
 
 .card-placeholder {
     aspect-ratio: 4 / 3;
+
     display: flex;
+
     align-items: center;
     justify-content: center;
+
     font-size: 12px;
+
     font-weight: 900;
+
     text-transform: uppercase;
 }
 
 .card-photo {
     aspect-ratio: 4 / 3;
+
     object-fit: cover;
+
     filter: contrast(1.2);
+
     transition:
         transform .35s ease,
         filter .35s ease;
@@ -241,27 +289,37 @@ nav {
 
 .card:hover .card-photo {
     transform: scale(1.015);
+
     filter: contrast(1.05);
 }
 
 .card .meta {
     margin-top: 11px;
+
     font-size: 11px;
+
     font-weight: 900;
+
     text-transform: uppercase;
 }
 
 .card h2 {
     font-size: clamp(30px, 4vw, 64px);
+
     line-height: .84;
+
     letter-spacing: -3px;
+
     font-weight: 900;
+
     text-transform: uppercase;
+
     margin-top: 7px;
 }
 
 .card:hover h2 {
     text-decoration: underline;
+
     text-underline-offset: 5px;
 }
 
@@ -272,13 +330,20 @@ nav {
 
 .category-intro {
     display: flex;
+
     justify-content: space-between;
     align-items: flex-end;
+
     border-bottom: 1px solid var(--black);
+
     padding-bottom: 10px;
+
     margin-bottom: 30px;
+
     font-size: 12px;
+
     font-weight: 900;
+
     text-transform: uppercase;
 }
 
@@ -293,74 +358,86 @@ nav {
 
 .article-cover {
     width: 100%;
+
     height: 70vh;
+
     object-fit: cover;
+
     filter: contrast(1.15);
 }
 
 .article-placeholder {
     height: 70vh;
+
     background: var(--grey);
+
     display: flex;
+
     align-items: center;
     justify-content: center;
-    font-size: 13px;
-    font-weight: 900;
-    text-transform: uppercase;
-}
 
-/* === FIX: article-meta === */
-.article-meta {
-    display: flex;
-    justify-content: space-between;
-    border-top: 3px solid var(--black);
-    margin-top: 18px;
-    padding-top: 12px;
-    font-size: 12px;
+    font-size: 13px;
+
     font-weight: 900;
+
     text-transform: uppercase;
-    letter-spacing: 0.02em;
 }
 
 .article-title {
     font-size: clamp(48px, 8vw, 120px);
+
     line-height: .82;
+
     letter-spacing: -5px;
+
     font-weight: 900;
+
     text-transform: uppercase;
-    margin: 28px 0 70px;
+
+    margin: 25px 0 80px;
+
     max-width: 1400px;
 }
 
 .article-writing {
     max-width: 750px;
+
     margin: auto;
+
     font-size: 18px;
-    line-height: 1.65;
-    font-weight: 500; /* softer body text */
+
+    line-height: 1.55;
 }
 
 .article-writing p {
-    margin-bottom: 28px;
+    margin-bottom: 25px;
 }
 
 .article-intro {
     font-size: 42px;
+
     line-height: .95;
+
     font-weight: 900;
+
     text-transform: uppercase;
+
     letter-spacing: -2px;
+
     margin-bottom: 50px;
 }
 
 .article-writing figure {
     width: 130%;
+
     margin: 60px 0 60px -15%;
 }
 
 .article-writing figure img {
     width: 100%;
+
     filter: grayscale(100%);
+
     transition: filter .3s ease;
 }
 
@@ -370,14 +447,1407 @@ nav {
 
 figcaption {
     font-size: 10px;
-    font-weight: 700;
+
+    font-weight: 900;
+
     text-transform: uppercase;
+
     margin-top: 8px;
-    opacity: 0.65;
 }
 
 .back {
     max-width: 750px;
-    margin: 110px auto 0;
-    padding-top: 18px;
-    border-top: 1px solid var
+
+    margin: 100px auto 0;
+
+    padding-top: 15px;
+
+    border-top: 1px solid var(--black);
+
+    font-size: 13px;
+
+    font-weight: 900;
+
+    cursor: pointer;
+}
+
+.back:hover {
+    text-decoration: underline;
+
+    text-underline-offset: 4px;
+}
+
+
+/* =========================================================
+   ARCHIVE
+   ========================================================= */
+
+.archive-item {
+    display: grid;
+
+    grid-template-columns: 60px 1fr 180px 70px;
+
+    align-items: center;
+
+    gap: 20px;
+
+    padding: 18px 0;
+
+    border-bottom: 1px solid var(--line);
+
+    cursor: pointer;
+
+    transition:
+        background .15s ease,
+        color .15s ease;
+}
+
+.archive-item:hover {
+    background: var(--black);
+
+    color: var(--white);
+}
+
+.archive-number {
+    font-size: 11px;
+}
+
+.archive-title {
+    font-size: 32px;
+
+    line-height: .9;
+
+    font-weight: 900;
+
+    text-transform: uppercase;
+
+    letter-spacing: -1.5px;
+}
+
+.archive-meta {
+    font-size: 11px;
+
+    font-weight: 900;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   SHOP
+   ========================================================= */
+
+.shop-grid {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 55px 25px;
+
+    margin-bottom: 100px;
+}
+
+.shop-item {
+    display: flex;
+
+    flex-direction: column;
+}
+
+.shop-placeholder {
+    aspect-ratio: 4 / 3;
+
+    background: var(--grey);
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 12px;
+
+    font-weight: 900;
+
+    text-transform: uppercase;
+
+    margin-bottom: 15px;
+
+    transition:
+        background .2s ease,
+        color .2s ease;
+}
+
+.shop-item:hover .shop-placeholder {
+    background: var(--black);
+
+    color: var(--white);
+}
+
+.shop-title {
+    font-size: clamp(28px, 3.5vw, 52px);
+
+    line-height: .86;
+
+    letter-spacing: -2px;
+
+    font-weight: 900;
+
+    text-transform: uppercase;
+
+    margin-bottom: 10px;
+}
+
+.shop-item:hover .shop-title {
+    text-decoration: underline;
+
+    text-underline-offset: 5px;
+}
+
+.shop-price {
+    font-size: 11px;
+
+    font-weight: 900;
+
+    text-transform: uppercase;
+
+    margin-bottom: 18px;
+}
+
+.shop-btn {
+    display: inline-block;
+
+    padding: 12px 15px;
+
+    border: 1px solid var(--black);
+
+    font-size: 11px;
+
+    font-weight: 900;
+
+    text-transform: uppercase;
+
+    text-align: center;
+
+    align-self: flex-start;
+
+    transition:
+        background .2s ease,
+        color .2s ease;
+}
+
+.shop-btn:hover {
+    background: var(--black);
+
+    color: var(--white);
+}
+
+
+/* =========================================================
+   ABOUT
+   ========================================================= */
+
+.about-wrapper {
+    min-height: 75vh;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+}
+
+.about-text {
+    max-width: 1000px;
+
+    font-size: clamp(32px, 5vw, 70px);
+
+    line-height: 1.08;
+
+    letter-spacing: -1px;
+
+    font-weight: 700;
+}
+
+.instagram {
+    display: inline-block;
+
+    margin-top: 120px;
+
+    padding: 7px 10px;
+
+    font-size: 11px;
+
+    font-weight: 900;
+
+    text-transform: uppercase;
+
+    letter-spacing: .08em;
+
+    border: 1px solid var(--black);
+}
+
+.instagram:hover {
+    background: var(--black);
+
+    color: var(--white);
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.site-footer {
+    border-top: 2px solid var(--black);
+
+    margin: 80px 25px 25px;
+
+    padding-top: 12px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    font-size: 10px;
+
+    font-weight: 900;
+
+    text-transform: uppercase;
+}
+
+.site-footer div:last-child {
+    display: flex;
+
+    gap: 10px;
+}
+
+.site-footer a:hover {
+    text-decoration: underline;
+
+    text-underline-offset: 4px;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 800px) {
+
+    nav {
+        padding: 16px 15px;
+
+        display: block;
+    }
+
+    .logo {
+        font-size: 27px;
+
+        letter-spacing: -1.5px;
+
+        margin-bottom: 14px;
+    }
+
+    .nav-links {
+        gap: 13px;
+
+        flex-wrap: wrap;
+
+        font-size: 11px;
+    }
+
+    .page {
+        padding: 120px 15px 40px;
+    }
+
+    .page-heading {
+        font-size: 20vw;
+
+        letter-spacing: -5px;
+    }
+
+    .hero h1 {
+        font-size: 17vw;
+
+        letter-spacing: -4px;
+    }
+
+    .article-grid {
+        display: block;
+    }
+
+    .card,
+    .card-large,
+    .card-small,
+    .card-half {
+        display: block;
+
+        margin-bottom: 60px;
+    }
+
+    .card h2 {
+        font-size: 45px;
+    }
+
+    .article-cover,
+    .article-placeholder {
+        height: 50vh;
+    }
+
+    .article-title {
+        font-size: 17vw;
+
+        letter-spacing: -5px;
+    }
+
+    .article-writing {
+        font-size: 16px;
+    }
+
+    .article-intro {
+        font-size: 32px;
+    }
+
+    .article-writing figure {
+        width: 100%;
+
+        margin-left: 0;
+    }
+
+    .archive-item {
+        grid-template-columns: 40px 1fr;
+
+        gap: 10px;
+    }
+
+    .archive-meta {
+        display: none;
+    }
+
+    .archive-title {
+        font-size: 24px;
+    }
+
+    .shop-grid {
+        grid-template-columns: 1fr;
+
+        gap: 50px;
+    }
+
+    .shop-title {
+        font-size: 42px;
+    }
+
+    .shop-btn {
+        width: 100%;
+    }
+
+    .site-footer {
+        margin: 60px 15px 20px;
+
+        flex-direction: column;
+
+        gap: 8px;
+    }
+
+    .site-footer div:last-child {
+        display: block;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     NAVIGATION
+     ===================================================== -->
+
+<nav>
+
+    <div class="logo">
+
+        <a onclick="navigate('home')">
+            Void Magazine
+        </a>
+
+    </div>
+
+
+    <div class="nav-links">
+
+        <a onclick="navigate('home')">
+            Home
+        </a>
+
+        <a onclick="navigate('category', 'Music')">
+            Music
+        </a>
+
+        <a onclick="navigate('category', 'Fashion')">
+            Fashion
+        </a>
+
+        <a onclick="navigate('category', 'Art')">
+            Art
+        </a>
+
+        <a onclick="navigate('category', 'Culture')">
+            Culture
+        </a>
+
+        <a onclick="navigate('shop')">
+            Shop
+        </a>
+
+        <a onclick="navigate('archive')">
+            Archive
+        </a>
+
+        <a onclick="navigate('about')">
+            About
+        </a>
+
+    </div>
+
+</nav>
+
+
+<!-- =====================================================
+     HOME
+     ===================================================== -->
+
+<section id="home" class="page active">
+
+    <div id="hero"></div>
+
+    <div class="latest-label">
+        Latest
+    </div>
+
+    <div id="latest" class="article-grid"></div>
+
+</section>
+
+
+<!-- =====================================================
+     CATEGORY
+     ===================================================== -->
+
+<section id="category" class="page">
+
+    <div id="category-heading" class="page-heading">
+        Music
+    </div>
+
+    <div class="category-intro">
+
+        <div id="category-label">
+            Music
+        </div>
+
+        <div id="category-count" class="category-count">
+            0 ARTICLES
+        </div>
+
+    </div>
+
+    <div id="category-list" class="article-grid"></div>
+
+</section>
+
+
+<!-- =====================================================
+     ARTICLE
+     ===================================================== -->
+
+<section id="article" class="page">
+
+    <div id="article-content"></div>
+
+</section>
+
+
+<!-- =====================================================
+     SHOP
+     ===================================================== -->
+
+<section id="shop" class="page">
+
+    <div class="page-heading">
+        Shop
+    </div>
+
+    <div class="shop-grid">
+
+
+        <div class="shop-item">
+
+            <div class="shop-placeholder">
+                IMAGE COMING SOON
+            </div>
+
+            <div class="shop-title">
+                Technical Tee
+            </div>
+
+            <div class="shop-price">
+                PRICE ON REQUEST
+            </div>
+
+            <a
+                class="shop-btn"
+                href="https://wa.me/6283876322878?text=Hello%2C%20Voidmag%21%20I%27m%20interested%20in%20the%20Technical%20Tee."
+                target="_blank"
+            >
+                ORDER VIA WHATSAPP â
+            </a>
+
+        </div>
+
+
+        <div class="shop-item">
+
+            <div class="shop-placeholder">
+                IMAGE COMING SOON
+            </div>
+
+            <div class="shop-title">
+                Cap
+            </div>
+
+            <div class="shop-price">
+                PRICE ON REQUEST
+            </div>
+
+            <a
+                class="shop-btn"
+                href="https://wa.me/6283876322878?text=Hello%2C%20Voidmag%21%20I%27m%20interested%20in%20the%20Cap."
+                target="_blank"
+            >
+                ORDER VIA WHATSAPP â
+            </a>
+
+        </div>
+
+
+        <div class="shop-item">
+
+            <div class="shop-placeholder">
+                IMAGE COMING SOON
+            </div>
+
+            <div class="shop-title">
+                Poster
+            </div>
+
+            <div class="shop-price">
+                PRICE ON REQUEST
+            </div>
+
+            <a
+                class="shop-btn"
+                href="https://wa.me/6283876322878?text=Hello%2C%20Voidmag%21%20I%27m%20interested%20in%20the%20Poster."
+                target="_blank"
+            >
+                ORDER VIA WHATSAPP â
+            </a>
+
+        </div>
+
+
+        <div class="shop-item">
+
+            <div class="shop-placeholder">
+                IMAGE COMING SOON
+            </div>
+
+            <div class="shop-title">
+                Issue
+            </div>
+
+            <div class="shop-price">
+                PRICE ON REQUEST
+            </div>
+
+            <a
+                class="shop-btn"
+                href="https://wa.me/6283876322878?text=Hello%2C%20Voidmag%21%20I%27m%20interested%20in%20the%20Issue."
+                target="_blank"
+            >
+                ORDER VIA WHATSAPP â
+            </a>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     ARCHIVE
+     ===================================================== -->
+
+<section id="archive" class="page">
+
+    <div class="page-heading">
+        Archive
+    </div>
+
+    <div id="archive-list"></div>
+
+</section>
+
+
+<!-- =====================================================
+     ABOUT
+     ===================================================== -->
+
+<section id="about" class="page">
+
+    <div class="about-wrapper">
+
+        <div>
+
+            <div class="about-text">
+
+                Void Magazine is an independent
+                publication exploring music,
+                fashion, art,
+                culture and the scenes
+                around them.
+
+            </div>
+
+
+            <a
+                class="instagram"
+                href="https://www.instagram.com/voidmaag/"
+                target="_blank"
+            >
+
+                INSTAGRAM â @VOIDMAAG
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<script>
+
+/* =========================================================
+   ARTICLES
+   ========================================================= */
+
+const ARTICLES = [
+
+    {
+        id: "awake",
+
+        title: "WHO'S STILL AWAKE?",
+
+        category: "Music / Culture",
+
+        year: "2026",
+
+        cover: "awake-1.jpg",
+
+        text: [
+
+            "WHO'S STILL AWAKE?",
+
+            "The night has its own rhythm. Long after the city starts to slow down, another world keeps moving.",
+
+            "Who's still awake? The people behind the decks, the people on the dancefloor, the ones working through the night, and everyone who somehow never went home.",
+
+            "An ongoing look into music, nightlife, spaces, and the people who keep them alive."
+
+        ],
+
+        photos: [
+            "awake-1.jpg",
+            "awake-2.jpg"
+        ]
+
+    },
+
+
+    {
+        id: "essential-albums",
+
+        title: "THE MOST ESSENTIAL ELECTRONIC ALBUMS OF THE 1990s",
+
+        category: "Music",
+
+        year: "2026",
+
+        cover: "the90s-01.PNG",
+
+        text: [
+
+            "The 1990s changed the language of electronic music.",
+
+            "A decade of experimentation, machines, clubs, labels and records that continue to shape electronic music today.",
+
+            "Dari ambient, techno, house, IDM, hingga dub techno, dekade ini melahirkan berbagai karya yang tidak hanya menawarkan pendekatan baru dalam produksi suara, tetapi juga membentuk bahasa dan identitas baru dalam musik elektronik. Beberapa rilisan bahkan terus menjadi titik referensi bagi generasi setelahnya baik melalui inovasi produksinya, karakter sound, maupun pengaruhnya terhadap perkembangan kultur club dan underground. Empat album dalam versi Void Magazine ini mewakili sebagian kecil dari perubahan tersebut."
+
+        ],
+
+        photos: [
+            "the90s-2.PNG",
+            "the90s-3.PNG",
+            "the90s-4.PNG",
+            "the90s-5.PNG"
+        ]
+
+    },
+
+
+    {
+        id: "festivals",
+
+        title: "FESTIVALS THAT FEEL UNREAL",
+
+        category: "Culture",
+
+        year: "2026",
+
+        cover: "fest-01.jpg",
+
+        text: [
+
+            "Some festivals feel less like events and more like temporary worlds.",
+
+            "A collection of places, sounds, crowds and moments that exist for a short time before disappearing.",
+
+            "FULL ARTICLE COMING SOON."
+
+        ],
+
+        photos: []
+
+    },
+
+
+    {
+        id: "ben-ufo",
+
+        title: "BEN UFO: THE UNEXPECTED",
+
+        category: "Music / Profile",
+
+        year: "2026",
+
+        cover: "benufo-1.jpg",
+
+        text: [
+
+            "There is a specific kind of tension that builds in a room when Ben UFO is behind the decks.",
+
+            "A DJ defined less by production and more by selection, instinct and the ability to make a room listen.",
+
+            "FULL ARTICLE COMING SOON."
+
+        ],
+
+        photos: [
+            "benufo-2.JPG"
+        ]
+
+    },
+
+
+    {
+        id: "daito-manabe",
+
+        title: "Particles is a Hybrid of Kinetic and Light Art Daito Manabe",
+
+        category: "Art",
+
+        year: "2026",
+
+        cover: "Void-01.PNG",
+
+        text: [
+
+            "Particles is a Hybrid of Kinetic and Light Art installations that creates unique pattern of three-dimensional floating and flickering dots.",
+
+            "In a dark room, a sixteen-level, eight-shaped toboggan-like rail structure is set up.",
+
+            "The structure is 7.5m high and 8m wide where 120 balls with built in LEDs roll down the spiral rails.",
+
+            "Each ball also has a built-in connection which allows the LEDs to be activated remotely.",
+
+            "As the balls roll down the rails, three-dimensional flickering patterns emerge as the individual balls blink on and off."
+
+        ],
+
+        photos: [
+            "Void-02.JPG",
+            "Void-03.PNG",
+            "Void-04.JPG",
+            "Void-05.JPG",
+            "Void-06.JPG"
+        ]
+
+    },
+
+
+    {
+        id: "yohyi-yamamoto",
+
+        title: "Yohji Yamamoto has always found beauty in imperfection.",
+
+        category: "Fashion",
+
+        year: "2026",
+
+        cover: "YY-01.webp",
+
+        text: [
+
+            "Black, oversized silhouettes, asymmetry and unfinished edges became part of a language that challenged the polished ideals of fashion.",
+
+            "For Yamamoto, clothing was never simply about making the body look beautiful.",
+
+            "His work continues to exist somewhere between order and disorder, beauty and distortion, the finished and the unfinished.",
+
+            "Based on The Independentâs profile on Yohji Yamamoto.",
+
+            "For Yohji Yamamoto, beauty has always existed somewhere between imperfection, disorder and distortion.",
+
+            "His oversized silhouettes, asymmetrical cuts and unfinished edges became a quiet rejection of fashionâs obsession with perfection."
+
+        ],
+
+        photos: [
+            "YY-02.JPG.jpeg",
+            "YY-03.JPG.jpeg",
+            "YY-04.JPG.jpeg",
+            "YY-05.JPG.jpeg",
+            "YY-06.JPG.jpeg",
+            "YY-07.JPG.jpeg",
+            "YY-08.JPG.jpeg"
+        ]
+
+    }
+
+];
+
+
+/* =========================================================
+   CATEGORY MATCHING
+   ========================================================= */
+
+function belongsToCategory(article, category) {
+
+    return article.category
+        .toLowerCase()
+        .split("/")
+        .map(function(item) {
+            return item.trim();
+        })
+        .includes(category.toLowerCase());
+
+}
+
+
+/* =========================================================
+   NAVIGATION
+   ========================================================= */
+
+function navigate(page, value = null) {
+
+    document
+        .querySelectorAll(".page")
+        .forEach(function(item) {
+
+            item.classList.remove("active");
+
+        });
+
+
+    const target =
+        document.getElementById(page);
+
+
+    if (!target) return;
+
+
+    target.classList.add("active");
+
+
+    window.scrollTo(0, 0);
+
+
+    if (page === "article" && value) {
+
+        showArticle(value);
+
+    }
+
+
+    if (page === "category" && value) {
+
+        showCategory(value);
+
+    }
+
+}
+
+
+/* =========================================================
+   IMAGE
+   ========================================================= */
+
+function createImage(article, className) {
+
+    if (!article.cover) {
+
+        return `
+            <div class="article-placeholder">
+                IMAGE COMING SOON
+            </div>
+        `;
+
+    }
+
+
+    return `
+        <img
+            class="${className}"
+            src="${article.cover}"
+            alt="${article.title}"
+        >
+    `;
+
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+function createHero() {
+
+    const article = ARTICLES[0];
+
+
+    document.getElementById("hero").innerHTML = `
+
+        <div
+            class="hero"
+            onclick="navigate('article', '${article.id}')"
+        >
+
+            <div class="hero-meta">
+                ${article.category}
+            </div>
+
+            <h1>
+                ${article.title}
+            </h1>
+
+            <div class="hero-year">
+                ${article.year}
+            </div>
+
+        </div>
+
+    `;
+
+}
+
+
+/* =========================================================
+   CARD
+   ========================================================= */
+
+function createCard(article, index = 0) {
+
+    let image;
+
+
+    if (article.cover) {
+
+        image = `
+            <img
+                class="card-photo"
+                src="${article.cover}"
+                alt="${article.title}"
+            >
+        `;
+
+    } else {
+
+        image = `
+            <div class="card-placeholder">
+                IMAGE COMING SOON
+            </div>
+        `;
+
+    }
+
+
+    let sizeClass = "card-half";
+
+
+    if (index === 0) {
+
+        sizeClass = "card-large";
+
+    }
+
+    else if (index === 1) {
+
+        sizeClass = "card-small";
+
+    }
+
+
+    return `
+
+        <article
+            class="card ${sizeClass}"
+            onclick="navigate('article', '${article.id}')"
+        >
+
+            <div class="card-image">
+
+                ${image}
+
+            </div>
+
+
+            <div class="meta">
+
+                ${article.category}
+
+            </div>
+
+
+            <h2>
+
+                ${article.title}
+
+            </h2>
+
+        </article>
+
+    `;
+
+}
+
+
+/* =========================================================
+   LATEST
+   ========================================================= */
+
+function createLatest() {
+
+    const container =
+        document.getElementById("latest");
+
+
+    container.innerHTML =
+        ARTICLES
+        .slice(1)
+        .map(function(article, index) {
+
+            return createCard(article, index);
+
+        })
+        .join("");
+
+}
+
+
+/* =========================================================
+   CATEGORY
+   ========================================================= */
+
+function showCategory(category) {
+
+    const articles =
+        ARTICLES.filter(function(article) {
+
+            return belongsToCategory(article, category);
+
+        });
+
+
+    document.getElementById("category-heading").textContent =
+        category;
+
+
+    document.getElementById("category-label").textContent =
+        category;
+
+
+    document.getElementById("category-count").textContent =
+        `${articles.length} ARTICLE${articles.length === 1 ? "" : "S"}`;
+
+
+    const container =
+        document.getElementById("category-list");
+
+
+    if (!articles.length) {
+
+        container.innerHTML = `
+            <div class="category-intro">
+                NO ARTICLES YET.
+            </div>
+        `;
+
+        return;
+
+    }
+
+
+    container.innerHTML =
+        articles
+        .map(function(article, index) {
+
+            return createCard(article, index);
+
+        })
+        .join("");
+
+}
+
+
+/* =========================================================
+   ARCHIVE
+   ========================================================= */
+
+function createArchive() {
+
+    const container =
+        document.getElementById("archive-list");
+
+
+    container.innerHTML =
+        ARTICLES
+        .map(function(article, index) {
+
+            return `
+
+                <div
+                    class="archive-item"
+                    onclick="navigate('article', '${article.id}')"
+                >
+
+                    <div class="archive-number">
+
+                        ${String(index + 1).padStart(2, "0")}
+
+                    </div>
+
+
+                    <div class="archive-title">
+
+                        ${article.title}
+
+                    </div>
+
+
+                    <div class="archive-meta">
+
+                        ${article.category}
+
+                    </div>
+
+
+                    <div class="archive-meta">
+
+                        ${article.year}
+
+                    </div>
+
+                </div>
+
+            `;
+
+        })
+        .join("");
+
+}
+
+
+/* =========================================================
+   ARTICLE
+   ========================================================= */
+
+function showArticle(id) {
+
+    const article =
+        ARTICLES.find(function(item) {
+
+            return item.id === id;
+
+        });
+
+
+    if (!article) return;
+
+
+    let content = "";
+
+
+    article.text.forEach(function(paragraph, index) {
+
+        if (index === 0) {
+
+            content += `
+
+                <div class="article-intro">
+
+                    ${paragraph}
+
+                </div>
+
+            `;
+
+        } else {
+
+            content += `
+
+                <p>
+
+                    ${paragraph}
+
+                </p>
+
+            `;
+
+        }
+
+    });
+
+
+    article.photos.forEach(function(photo) {
+
+        content += `
+
+            <figure>
+
+                <img
+                    src="${photo}"
+                    alt="${article.title}"
+                >
+
+                <figcaption>
+
+                    VOIDMAG â ${article.year}
+
+                </figcaption>
+
+            </figure>
+
+        `;
+
+    });
+
+
+    document.getElementById("article-content").innerHTML = `
+
+        ${createImage(article, "article-cover")}
+
+
+        <div class="article-meta">
+
+            <span>
+                ${article.category}
+            </span>
+
+            <span>
+                ${article.year}
+            </span>
+
+        </div>
+
+
+        <h1 class="article-title">
+
+            ${article.title}
+
+        </h1>
+
+
+        <div class="article-writing">
+
+            ${content}
+
+        </div>
+
+
+        <div
+            class="back"
+            onclick="navigate('home')"
+        >
+
+            â BACK TO VOIDMAG
+
+        </div>
+
+    `;
+
+}
+
+
+/* =========================================================
+   START
+   ========================================================= */
+
+document.addEventListener("DOMContentLoaded", function() {
+
+    createHero();
+
+    createLatest();
+
+    createArchive();
+
+});
+
+</script>
+
+
+<footer class="site-footer">
+
+    <div>
+        Â© 2026 VOID MAGAZINE
+    </div>
+
+
+    <div>
+
+        <a
+            href="https://wa.me/6283876322878?text=Hello%2C%20Voidmag%20%21"
+            target="_blank"
+        >
+            BUSINESS INQUIRIES â MARTHA DIAZ
+        </a>
+
+    </div>
+
+</footer>
+
+
+</body>
+
+</html>
