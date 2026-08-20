@@ -67,9 +67,10 @@ nav {
     position: fixed;
     top: 0;
     left: 0;
+
     width: 100%;
 
-    padding: 20px 25px;
+    padding: 22px 25px;
 
     display: flex;
     justify-content: space-between;
@@ -82,25 +83,35 @@ nav {
 }
 
 .logo {
-    font-size: 34px;
+    font-size: 38px;
     font-weight: 900;
-    letter-spacing: -2px;
+    letter-spacing: -2.5px;
     line-height: .85;
+
+    white-space: nowrap;
 }
 
 .nav-links {
     display: flex;
-    gap: 25px;
+    align-items: center;
 
-    font-size: 13px;
+    gap: 28px;
+
+    font-size: 15px;
     font-weight: 900;
 
     text-transform: uppercase;
+
+    white-space: nowrap;
+}
+
+.nav-links a {
+    position: relative;
 }
 
 .nav-links a:hover {
     text-decoration: underline;
-    text-underline-offset: 4px;
+    text-underline-offset: 5px;
 }
 
 
@@ -110,11 +121,34 @@ nav {
 
 .page {
     display: none;
-    padding: 105px 25px 60px;
+
+    padding: 120px 25px 60px;
 }
 
 .page.active {
     display: block;
+}
+
+
+/* =========================================================
+   PAGE HEADING
+   ========================================================= */
+
+.page-heading {
+    font-size: clamp(70px, 12vw, 180px);
+
+    line-height: .75;
+    letter-spacing: -8px;
+
+    font-weight: 900;
+
+    text-transform: uppercase;
+
+    border-bottom: 3px solid var(--black);
+
+    padding-bottom: 25px;
+
+    margin-bottom: 35px;
 }
 
 
@@ -124,92 +158,105 @@ nav {
 
 .hero {
     cursor: pointer;
-    padding-bottom: 12px;
-    margin-bottom: 30px;
+
+    padding-bottom: 15px;
+
+    margin-bottom: 45px;
 }
 
 .hero-meta {
-    font-size: 14px;
+    font-size: 15px;
+
     font-weight: 900;
+
     text-transform: uppercase;
-    margin-bottom: 12px;
+
+    margin-bottom: 15px;
 }
 
 .hero h1 {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: clamp(75px, 12vw, 185px);
 
-    font-size: clamp(70px, 12vw, 180px);
-    line-height: .82;
-    letter-spacing: -5px;
+    line-height: .80;
+
+    letter-spacing: -6px;
 
     font-weight: 900;
+
     text-transform: uppercase;
 
-    max-width: 1000px;
-    margin: 0;
+    max-width: 1100px;
 }
 
 .hero-year {
-    font-size: 18px;
+    font-size: 19px;
+
     font-weight: 900;
-    margin-top: 12px;
+
+    margin-top: 15px;
 }
 
 .hero:hover h1 {
     text-decoration: underline;
-    text-underline-offset: 8px;
+
+    text-underline-offset: 9px;
 }
 
 
 /* =========================================================
-   LATEST
+   LATEST LABEL
    ========================================================= */
 
 .latest-label {
     border-top: 1px solid var(--black);
 
-    padding-top: 10px;
+    padding-top: 11px;
+
     margin-bottom: 30px;
 
-    font-size: 13px;
+    font-size: 14px;
+
     font-weight: 900;
 
     text-transform: uppercase;
 }
 
-#latest {
+
+/* =========================================================
+   ARTICLE GRID
+   ========================================================= */
+
+.article-grid {
     display: grid;
 
     grid-template-columns: repeat(12, 1fr);
 
-    gap: 25px;
+    gap: 30px 25px;
 
     margin-bottom: 100px;
 }
 
 .card {
     cursor: pointer;
+
     min-width: 0;
 }
 
-.card-1 {
-    grid-column: 1 / 8;
+.card-large {
+    grid-column: span 7;
 }
 
-.card-2 {
-    grid-column: 8 / 13;
+.card-small {
+    grid-column: span 5;
 }
 
-.card-3 {
-    grid-column: 1 / 7;
-}
-
-.card-4 {
-    grid-column: 7 / 13;
+.card-half {
+    grid-column: span 6;
 }
 
 .card-image {
     background: var(--grey);
+
     overflow: hidden;
 }
 
@@ -217,10 +264,12 @@ nav {
     aspect-ratio: 4 / 3;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
     font-size: 12px;
+
     font-weight: 900;
 
     text-transform: uppercase;
@@ -240,25 +289,29 @@ nav {
 
 .card:hover .card-photo {
     transform: scale(1.015);
+
     filter: contrast(1.05);
 }
 
 .card .meta {
-    margin-top: 10px;
+    margin-top: 11px;
 
     font-size: 11px;
+
     font-weight: 900;
 
     text-transform: uppercase;
 }
 
 .card h2 {
-    font-size: clamp(30px, 4vw, 65px);
+    font-size: clamp(30px, 4vw, 64px);
 
     line-height: .84;
+
     letter-spacing: -3px;
 
     font-weight: 900;
+
     text-transform: uppercase;
 
     margin-top: 7px;
@@ -266,16 +319,46 @@ nav {
 
 .card:hover h2 {
     text-decoration: underline;
+
     text-underline-offset: 5px;
 }
 
 
 /* =========================================================
-   ARTICLE
+   CATEGORY PAGE
+   ========================================================= */
+
+.category-intro {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: flex-end;
+
+    border-bottom: 1px solid var(--black);
+
+    padding-bottom: 10px;
+
+    margin-bottom: 30px;
+
+    font-size: 12px;
+
+    font-weight: 900;
+
+    text-transform: uppercase;
+}
+
+.category-count {
+    opacity: .6;
+}
+
+
+/* =========================================================
+   ARTICLE PAGE
    ========================================================= */
 
 .article-cover {
     width: 100%;
+
     height: 70vh;
 
     object-fit: cover;
@@ -289,25 +372,12 @@ nav {
     background: var(--grey);
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
     font-size: 13px;
-    font-weight: 900;
 
-    text-transform: uppercase;
-}
-
-.article-meta {
-    display: flex;
-    justify-content: space-between;
-
-    border-top: 3px solid var(--black);
-
-    margin-top: 15px;
-    padding-top: 10px;
-
-    font-size: 12px;
     font-weight: 900;
 
     text-transform: uppercase;
@@ -317,6 +387,7 @@ nav {
     font-size: clamp(48px, 8vw, 120px);
 
     line-height: .82;
+
     letter-spacing: -5px;
 
     font-weight: 900;
@@ -330,9 +401,11 @@ nav {
 
 .article-writing {
     max-width: 750px;
+
     margin: auto;
 
     font-size: 18px;
+
     line-height: 1.55;
 }
 
@@ -400,6 +473,7 @@ figcaption {
 
 .back:hover {
     text-decoration: underline;
+
     text-underline-offset: 4px;
 }
 
@@ -408,28 +482,10 @@ figcaption {
    ARCHIVE
    ========================================================= */
 
-.archive-heading {
-    font-size: clamp(70px, 12vw, 180px);
-
-    line-height: .75;
-
-    letter-spacing: -8px;
-
-    font-weight: 900;
-
-    text-transform: uppercase;
-
-    border-bottom: 3px solid var(--black);
-
-    padding-bottom: 25px;
-
-    margin-bottom: 20px;
-}
-
 .archive-item {
     display: grid;
 
-    grid-template-columns: 60px 1fr 150px 70px;
+    grid-template-columns: 60px 1fr 180px 70px;
 
     align-items: center;
 
@@ -448,6 +504,7 @@ figcaption {
 
 .archive-item:hover {
     background: var(--black);
+
     color: var(--white);
 }
 
@@ -494,8 +551,6 @@ figcaption {
     display: flex;
 
     flex-direction: column;
-
-    cursor: pointer;
 }
 
 .shop-placeholder {
@@ -504,12 +559,12 @@ figcaption {
     background: var(--grey);
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
-    padding: 20px;
-
     font-size: 12px;
+
     font-weight: 900;
 
     text-transform: uppercase;
@@ -523,6 +578,7 @@ figcaption {
 
 .shop-item:hover .shop-placeholder {
     background: var(--black);
+
     color: var(--white);
 }
 
@@ -542,6 +598,7 @@ figcaption {
 
 .shop-item:hover .shop-title {
     text-decoration: underline;
+
     text-underline-offset: 5px;
 }
 
@@ -558,7 +615,7 @@ figcaption {
 .shop-btn {
     display: inline-block;
 
-    padding: 11px 14px;
+    padding: 12px 15px;
 
     border: 1px solid var(--black);
 
@@ -570,19 +627,17 @@ figcaption {
 
     text-align: center;
 
+    align-self: flex-start;
+
     transition:
         background .2s ease,
         color .2s ease;
-
-    align-self: flex-start;
 }
 
 .shop-btn:hover {
     background: var(--black);
 
     color: var(--white);
-
-    text-decoration: none;
 }
 
 
@@ -612,8 +667,6 @@ figcaption {
     letter-spacing: -1px;
 
     font-weight: 700;
-
-    text-transform: none;
 }
 
 .instagram {
@@ -685,50 +738,51 @@ figcaption {
 @media (max-width: 800px) {
 
     nav {
-        padding: 15px;
+        padding: 16px 15px;
 
         display: block;
     }
 
     .logo {
-        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 27px;
 
-        font-size: 24px;
+        letter-spacing: -1.5px;
 
-        font-weight: 900;
-
-        letter-spacing: -1px;
-
-        margin-bottom: 12px;
+        margin-bottom: 14px;
     }
 
     .nav-links {
-        gap: 12px;
+        gap: 13px;
 
         flex-wrap: wrap;
 
-        font-size: 10px;
+        font-size: 11px;
     }
 
     .page {
-        padding: 110px 15px 40px;
+        padding: 120px 15px 40px;
+    }
+
+    .page-heading {
+        font-size: 20vw;
+
+        letter-spacing: -5px;
     }
 
     .hero h1 {
-        font-size: 16vw;
+        font-size: 17vw;
 
         letter-spacing: -4px;
     }
 
-    #latest {
+    .article-grid {
         display: block;
     }
 
     .card,
-    .card-1,
-    .card-2,
-    .card-3,
-    .card-4 {
+    .card-large,
+    .card-small,
+    .card-half {
         display: block;
 
         margin-bottom: 60px;
@@ -802,6 +856,7 @@ figcaption {
     .site-footer div:last-child {
         display: block;
     }
+
 }
 
 </style>
@@ -830,18 +885,22 @@ figcaption {
     <div class="nav-links">
 
         <a onclick="navigate('home')">
+            Home
+        </a>
+
+        <a onclick="navigate('category', 'Music')">
             Music
         </a>
 
-        <a onclick="navigate('home')">
+        <a onclick="navigate('category', 'Fashion')">
             Fashion
         </a>
 
-        <a onclick="navigate('home')">
+        <a onclick="navigate('category', 'Art')">
             Art
         </a>
 
-        <a onclick="navigate('home')">
+        <a onclick="navigate('category', 'Culture')">
             Culture
         </a>
 
@@ -874,7 +933,34 @@ figcaption {
         Latest
     </div>
 
-    <div id="latest"></div>
+    <div id="latest" class="article-grid"></div>
+
+</section>
+
+
+<!-- =====================================================
+     CATEGORY
+     ===================================================== -->
+
+<section id="category" class="page">
+
+    <div id="category-heading" class="page-heading">
+        Music
+    </div>
+
+    <div class="category-intro">
+
+        <div id="category-label">
+            Music
+        </div>
+
+        <div id="category-count" class="category-count">
+            0 ARTICLES
+        </div>
+
+    </div>
+
+    <div id="category-list" class="article-grid"></div>
 
 </section>
 
@@ -896,7 +982,7 @@ figcaption {
 
 <section id="shop" class="page">
 
-    <div class="archive-heading">
+    <div class="page-heading">
         Shop
     </div>
 
@@ -1014,7 +1100,7 @@ figcaption {
 
 <section id="archive" class="page">
 
-    <div class="archive-heading">
+    <div class="page-heading">
         Archive
     </div>
 
@@ -1264,10 +1350,27 @@ const ARTICLES = [
 
 
 /* =========================================================
+   CATEGORY MATCHING
+   ========================================================= */
+
+function belongsToCategory(article, category) {
+
+    return article.category
+        .toLowerCase()
+        .split("/")
+        .map(function(item) {
+            return item.trim();
+        })
+        .includes(category.toLowerCase());
+
+}
+
+
+/* =========================================================
    NAVIGATION
    ========================================================= */
 
-function navigate(page, articleID = null) {
+function navigate(page, value = null) {
 
     document
         .querySelectorAll(".page")
@@ -1291,9 +1394,16 @@ function navigate(page, articleID = null) {
     window.scrollTo(0, 0);
 
 
-    if (page === "article" && articleID) {
+    if (page === "article" && value) {
 
-        showArticle(articleID);
+        showArticle(value);
+
+    }
+
+
+    if (page === "category" && value) {
+
+        showCategory(value);
 
     }
 
@@ -1364,6 +1474,86 @@ function createHero() {
 
 
 /* =========================================================
+   CARD
+   ========================================================= */
+
+function createCard(article, index = 0) {
+
+    let image;
+
+
+    if (article.cover) {
+
+        image = `
+            <img
+                class="card-photo"
+                src="${article.cover}"
+                alt="${article.title}"
+            >
+        `;
+
+    } else {
+
+        image = `
+            <div class="card-placeholder">
+                IMAGE COMING SOON
+            </div>
+        `;
+
+    }
+
+
+    let sizeClass = "card-half";
+
+
+    if (index === 0) {
+
+        sizeClass = "card-large";
+
+    }
+
+    else if (index === 1) {
+
+        sizeClass = "card-small";
+
+    }
+
+
+    return `
+
+        <article
+            class="card ${sizeClass}"
+            onclick="navigate('article', '${article.id}')"
+        >
+
+            <div class="card-image">
+
+                ${image}
+
+            </div>
+
+
+            <div class="meta">
+
+                ${article.category}
+
+            </div>
+
+
+            <h2>
+
+                ${article.title}
+
+            </h2>
+
+        </article>
+
+    `;
+
+}
+
+
+/* =========================================================
    LATEST
    ========================================================= */
 
@@ -1378,60 +1568,62 @@ function createLatest() {
         .slice(1)
         .map(function(article, index) {
 
-            let image;
+            return createCard(article, index);
+
+        })
+        .join("");
+
+}
 
 
-            if (article.cover) {
+/* =========================================================
+   CATEGORY
+   ========================================================= */
 
-                image = `
-                    <img
-                        class="card-photo"
-                        src="${article.cover}"
-                        alt="${article.title}"
-                    >
-                `;
+function showCategory(category) {
 
-            } else {
+    const articles =
+        ARTICLES.filter(function(article) {
 
-                image = `
-                    <div class="card-placeholder">
-                        IMAGE COMING SOON
-                    </div>
-                `;
+            return belongsToCategory(article, category);
 
-            }
+        });
 
 
-            return `
-
-                <article
-                    class="card card-${index + 1}"
-                    onclick="navigate('article', '${article.id}')"
-                >
-
-                    <div class="card-image">
-
-                        ${image}
-
-                    </div>
+    document.getElementById("category-heading").textContent =
+        category;
 
 
-                    <div class="meta">
-
-                        ${article.category}
-
-                    </div>
+    document.getElementById("category-label").textContent =
+        category;
 
 
-                    <h2>
+    document.getElementById("category-count").textContent =
+        `${articles.length} ARTICLE${articles.length === 1 ? "" : "S"}`;
 
-                        ${article.title}
 
-                    </h2>
+    const container =
+        document.getElementById("category-list");
 
-                </article>
 
-            `;
+    if (!articles.length) {
+
+        container.innerHTML = `
+            <div class="category-intro">
+                NO ARTICLES YET.
+            </div>
+        `;
+
+        return;
+
+    }
+
+
+    container.innerHTML =
+        articles
+        .map(function(article, index) {
+
+            return createCard(article, index);
 
         })
         .join("");
@@ -1575,6 +1767,19 @@ function showArticle(id) {
     document.getElementById("article-content").innerHTML = `
 
         ${createImage(article, "article-cover")}
+
+
+        <div class="article-meta">
+
+            <span>
+                ${article.category}
+            </span>
+
+            <span>
+                ${article.year}
+            </span>
+
+        </div>
 
 
         <h1 class="article-title">
